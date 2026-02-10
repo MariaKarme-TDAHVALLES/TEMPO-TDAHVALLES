@@ -1,0 +1,7 @@
+{
+  "name": "TEMPO TDAH VALLÈS",
+  "description": "A specialized task organizer and timer designed for individuals with ADHD, featuring a points system for avatar evolution.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
