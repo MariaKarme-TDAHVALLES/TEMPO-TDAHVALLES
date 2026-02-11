@@ -393,9 +393,8 @@ const App: React.FC = () => {
     setCustomDuration('');
     setIsGenerating(false);
 
-    if (realityCheckNeeded) {
-      setShowChat(true);
-    }
+    // ALWAYS show chat when adding a task to help the user start
+    setShowChat(true);
   };
 
   const getDayName = (dayIndex: number) => {

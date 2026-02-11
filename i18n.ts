@@ -32,7 +32,7 @@ export const translations: Record<Language, any> = {
     r_wake: "🌅 Despertarse", r_dress: "👕 Vestirse", r_breakfast: "🥣 Desayunar", r_teeth: "🪥 Lavar dientes",
     r_school: "🏫 Escuela", r_lunch: "🍽️ Comida y descanso", r_shower: "🚿 Ducha", r_pack: "🎒 Mochila lista",
     r_dinner: "🍽️ Cena", r_sleep: "😴 A dormir", r_routines: "🚿 Rutinas mañaneras", r_highschool: "🏫 Instituto",
-    r_meds: "🌅 Despertar + Medicación", r_coffee: "☕ Café y Planificación", r_work1: "💼 Bloque Trabajo Profundo",
+    r_meds: "🌅 Despertar", r_coffee: "☕ Café y Planificación", r_work1: "💼 Bloque Trabajo Profundo",
     r_work2: "📧 Emails y Reuniones", r_home: "🛒 Gestión Casa / Compra", r_winddown: "📖 Desconexión pantallas"
   },
   [Language.CATALAN]: {
@@ -65,7 +65,7 @@ export const translations: Record<Language, any> = {
     r_wake: "🌅 Aixecar-se", r_dress: "👕 Vestir-se", r_breakfast: "🥣 Esmorzar", r_teeth: "🪥 Rentar dents",
     r_school: "🏫 Escola", r_lunch: "🍽️ Dinar i descans", r_shower: "🚿 Dutxa", r_pack: "🎒 Motxilla preparada",
     r_dinner: "🍽️ Sopar", r_sleep: "😴 Anar a dormir", r_routines: "🚿 Rutines matinals", r_highschool: "🏫 Institut",
-    r_meds: "🌅 Despertar + Medicació", r_coffee: "☕ Cafè i Planificació", r_work1: "💼 Bloc Treball Profund",
+    r_meds: "🌅 Despertar", r_coffee: "☕ Cafè i Planificació", r_work1: "💼 Bloc Treball Profund",
     r_work2: "📧 Emails i Reunions", r_home: "🛒 Gestió Casa / Compra", r_winddown: "📖 Desconnexió pantalles"
   },
   [Language.ENGLISH]: {
@@ -98,7 +98,7 @@ export const translations: Record<Language, any> = {
     r_wake: "🌅 Wake up", r_dress: "👕 Get dressed", r_breakfast: "🥣 Breakfast", r_teeth: "🪥 Brush teeth",
     r_school: "🏫 School", r_lunch: "🍽️ Lunch & Rest", r_shower: "🚿 Shower", r_pack: "🎒 Pack bag",
     r_dinner: "🍽️ Dinner", r_sleep: "😴 Sleep", r_routines: "🚿 Morning routines", r_highschool: "🏫 High School",
-    r_meds: "🌅 Wake up + Meds", r_coffee: "☕ Coffee & Planning", r_work1: "💼 Deep Work Block",
+    r_meds: "🌅 Wake up", r_coffee: "☕ Coffee & Planning", r_work1: "💼 Deep Work Block",
     r_work2: "📧 Emails & Meetings", r_home: "🛒 Household / Shopping", r_winddown: "📖 Screen Wind-down"
   },
   [Language.GERMAN]: { 
@@ -106,7 +106,7 @@ export const translations: Record<Language, any> = {
     r_wake: "🌅 Aufwachen", r_dress: "👕 Anziehen", r_breakfast: "🥣 Frühstück", r_teeth: "🪥 Zähne putzen",
     r_school: "🏫 Schule", r_lunch: "🍽️ Mittagessen", r_shower: "🚿 Dusche", r_pack: "🎒 Tasche packen",
     r_dinner: "🍽️ Abendessen", r_sleep: "😴 Schlafen", r_routines: "🚿 Morgenroutine", r_highschool: "🏫 Gymnasium",
-    r_meds: "🌅 Aufwachen + Medis", r_coffee: "☕ Kaffee & Planung", r_work1: "💼 Tiefe Arbeit",
+    r_meds: "🌅 Aufwachen", r_coffee: "☕ Kaffee & Planung", r_work1: "💼 Tiefe Arbeit",
     r_work2: "📧 E-Mails & Meetings", r_home: "🛒 Haushalt / Einkauf", r_winddown: "📖 Bildschirm aus"
   },
   [Language.FRENCH]: { 
@@ -114,7 +114,7 @@ export const translations: Record<Language, any> = {
     r_wake: "🌅 Réveil", r_dress: "👕 S'habiller", r_breakfast: "🥣 Petit déj", r_teeth: "🪥 Dents",
     r_school: "🏫 École", r_lunch: "🍽️ Déjeuner", r_shower: "🚿 Douche", r_pack: "🎒 Sac prêt",
     r_dinner: "🍽️ Dîner", r_sleep: "😴 Dormir", r_routines: "🚿 Routines matin", r_highschool: "🏫 Lycée",
-    r_meds: "🌅 Réveil + Médicaments", r_coffee: "☕ Café & Planning", r_work1: "💼 Travail Profond",
+    r_meds: "🌅 Réveil", r_coffee: "☕ Café & Planning", r_work1: "💼 Travail Profond",
     r_work2: "📧 Emails & Réunions", r_home: "🛒 Maison / Courses", r_winddown: "📖 Écrans éteints"
   },
   [Language.ARANESE]: { 
@@ -122,7 +122,7 @@ export const translations: Record<Language, any> = {
     r_wake: "🌅 Desvelhar-se", r_dress: "👕 Vestir-se", r_breakfast: "🥣 Dejunar", r_teeth: "🪥 Lauar dents",
     r_school: "🏫 Escòla", r_lunch: "🍽️ Dinnar", r_shower: "🚿 Docha", r_pack: "🎒 Moishila",
     r_dinner: "🍽️ Sopar", r_sleep: "😴 Durmir", r_routines: "🚿 Rutines", r_highschool: "🏫 Institut",
-    r_meds: "🌅 Desvelhar + Med", r_coffee: "☕ Cafè & Plan", r_work1: "💼 Trebalh",
+    r_meds: "🌅 Desvelhar", r_coffee: "☕ Cafè & Plan", r_work1: "💼 Trebalh",
     r_work2: "📧 Emails", r_home: "🛒 Casa", r_winddown: "📖 Libes"
   },
   [Language.ITALIAN]: { 
@@ -130,7 +130,7 @@ export const translations: Record<Language, any> = {
     r_wake: "🌅 Sveglia", r_dress: "👕 Vestirsi", r_breakfast: "🥣 Colazione", r_teeth: "🪥 Denti",
     r_school: "🏫 Scuola", r_lunch: "🍽️ Pranzo", r_shower: "🚿 Doccia", r_pack: "🎒 Zaino",
     r_dinner: "🍽️ Cena", r_sleep: "😴 Dormire", r_routines: "🚿 Routine", r_highschool: "🏫 Liceo",
-    r_meds: "🌅 Sveglia + Med", r_coffee: "☕ Caffè & Piano", r_work1: "💼 Lavoro Focus",
+    r_meds: "🌅 Sveglia", r_coffee: "☕ Caffè & Piano", r_work1: "💼 Lavoro Focus",
     r_work2: "📧 Email", r_home: "🛒 Spesa", r_winddown: "📖 No schermi"
   },
   [Language.BASQUE]: { 
@@ -138,7 +138,7 @@ export const translations: Record<Language, any> = {
     r_wake: "🌅 Esnatu", r_dress: "👕 Jantzi", r_breakfast: "🥣 Gosaria", r_teeth: "🪥 Hortzak",
     r_school: "🏫 Eskola", r_lunch: "🍽️ Bazkaria", r_shower: "🚿 Dutxa", r_pack: "🎒 Motxila",
     r_dinner: "🍽️ Afaria", r_sleep: "😴 Lo", r_routines: "🚿 Goizekoak", r_highschool: "🏫 Institutua",
-    r_meds: "🌅 Esnatu + Med", r_coffee: "☕ Kafea", r_work1: "💼 Lana",
+    r_meds: "🌅 Esnatu", r_coffee: "☕ Kafea", r_work1: "💼 Lana",
     r_work2: "📧 Emailak", r_home: "🛒 Etxea", r_winddown: "📖 Irakurri"
   },
   [Language.GALICIAN]: { 
@@ -146,7 +146,7 @@ export const translations: Record<Language, any> = {
     r_wake: "🌅 Despertar", r_dress: "👕 Vestirse", r_breakfast: "🥣 Almorzo", r_teeth: "🪥 Dentes",
     r_school: "🏫 Escola", r_lunch: "🍽️ Xantar", r_shower: "🚿 Ducha", r_pack: "🎒 Mochila",
     r_dinner: "🍽️ Cea", r_sleep: "😴 Durmir", r_routines: "🚿 Rutinas", r_highschool: "🏫 Instituto",
-    r_meds: "🌅 Despertar + Med", r_coffee: "☕ Café", r_work1: "💼 Traballo",
+    r_meds: "🌅 Despertar", r_coffee: "☕ Café", r_work1: "💼 Traballo",
     r_work2: "📧 Email", r_home: "🛒 Casa", r_winddown: "📖 Ler"
   }
 };
