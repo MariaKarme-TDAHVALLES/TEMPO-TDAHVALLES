@@ -3,7 +3,7 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { ProfileType, RewardSuggestion, TaskStep, Language, Recipe } from "../types";
 
 export const getRewardSuggestions = async (profile: ProfileType, taskTitle: string, lang: Language): Promise<RewardSuggestion[]> => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
   const isWeekend = [0, 6].includes(new Date().getDay());
   
   const screenTimeWarning = isWeekend 
