@@ -32,7 +32,13 @@ const AIChat: React.FC<AIChatProps> = ({ profile, lang, activeTask }) => {
 
   // Initialize Chat Session
   useEffect(() => {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const apiKey = process.env.API_KEY;
+    if (!apiKey) {
+      setMessages([{ role: 'model', text: '⚠️ API Key is missing. AI Chat is unavailable.' }]);
+      return;
+    }
+
+    const ai = new GoogleGenAI({ apiKey });
     
     // Create new chat session
     chatSessionRef.current = ai.chats.create({
@@ -42,9 +48,7 @@ const AIChat: React.FC<AIChatProps> = ({ profile, lang, activeTask }) => {
       },
     });
 
-    // Reset UI messages when profile changes significantly, 
-    // but we could also keep them if we wanted persistence.
-    // For now, let's keep it clean for the new persona.
+    // Reset UI messages when profile changes significantly
     setMessages([]);
 
   }, [profile, lang]);
@@ -66,7 +70,13 @@ const AIChat: React.FC<AIChatProps> = ({ profile, lang, activeTask }) => {
   }, [messages]);
 
   const handleSend = async () => {
-    if (!input.trim() || isLoading || !chatSessionRef.current) return;
+    if (!input.trim() || isLoading) return;
+
+    if (!chatSessionRef.current) {
+      setMessages(prev => [...prev, { role: 'user', text: input }, { role: 'model', text: "⚠️ AI service not initialized (Missing API Key)." }]);
+      setInput('');
+      return;
+    }
 
     const userText = input;
     setInput('');

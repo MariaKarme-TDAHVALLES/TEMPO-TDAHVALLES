@@ -5,12 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
     <title>TEMPO TDAH - Vallès</title>
-    <link rel="manifest" href="./manifest.json">
+    <!-- Use root relative path for manifest to be standard -->
+    <link rel="manifest" href="/manifest.json">
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3652/3652191.png">
     <meta name="theme-color" content="#E85B22">
     <script>
       // Suppress the "cdn.tailwindcss.com should not be used in production" warning
-      // This allows us to use the CDN for rapid deployment without console noise.
       const originalWarn = console.warn;
       console.warn = function(...args) {
         if (args[0] && typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) return;
@@ -117,23 +117,9 @@
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          // Use relative path ./sw.js to avoid origin mismatch errors in previews
-          navigator.serviceWorker.register('./sw.js')
-            .then(reg => console.log('SW registered'))
-            .catch(err => console.log('SW registration failed (common in preview environments):', err));
-        });
-      }
-    </script>
-   <div id="root"></div>
-    
-<div id="root"></div>
-    
-   <script type="module" src="/index.tsx"></script> 
-
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./sw.js')
+          // Use root path /sw.js, falling back to relative if needed by the environment
+          const swPath = window.location.hostname.includes('vercel.app') ? '/sw.js' : './sw.js';
+          navigator.serviceWorker.register(swPath)
             .then(reg => console.log('SW registered'))
             .catch(err => console.log('SW registration failed:', err));
         });

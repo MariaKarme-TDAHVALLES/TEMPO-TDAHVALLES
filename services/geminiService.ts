@@ -2,8 +2,25 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { ProfileType, RewardSuggestion, TaskStep, Language, Recipe } from "../types";
 
+const getAiClient = () => {
+  const apiKey = process.env.API_KEY;
+  if (!apiKey) {
+    console.warn("Gemini API Key is missing");
+    return null;
+  }
+  return new GoogleGenAI({ apiKey });
+};
+
 export const getRewardSuggestions = async (profile: ProfileType, taskTitle: string, lang: Language): Promise<RewardSuggestion[]> => {
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+  const ai = getAiClient();
+  if (!ai) {
+    return [
+      { text: "Drink Water", icon: "💧" },
+      { text: "Eat an Apple", icon: "🍎" },
+      { text: "Stretch", icon: "🧘" }
+    ];
+  }
+
   const isWeekend = [0, 6].includes(new Date().getDay());
   
   const screenTimeWarning = isWeekend 
@@ -51,7 +68,9 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 };
 
 export const getQuickRecipes = async (taskTitle: string, lang: Language): Promise<Recipe[]> => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const ai = getAiClient();
+  if (!ai) return [];
+
   try {
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
@@ -81,7 +100,9 @@ export const getQuickRecipes = async (taskTitle: string, lang: Language): Promis
 };
 
 export const getPositivePhrase = async (profile: ProfileType, lang: Language): Promise<string> => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const ai = getAiClient();
+  if (!ai) return "¡Buen trabajo!";
+
   try {
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
@@ -95,7 +116,14 @@ export const getPositivePhrase = async (profile: ProfileType, lang: Language): P
 
 // Returns steps AND estimated time
 export const analyzeTask = async (profile: ProfileType, taskTitle: string, lang: Language): Promise<{ steps: TaskStep[], estimatedMinutes: number, feedback: string }> => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const ai = getAiClient();
+  if (!ai) {
+    return {
+      steps: [{ id: '1', text: taskTitle, completed: false }],
+      estimatedMinutes: 15,
+      feedback: ""
+    };
+  }
 
   const systemInstructions = {
     [ProfileType.CHILD]: `You are a helpful teacher. Break down tasks for a child. Estimate time realistically. Language: ${lang}.`,
@@ -150,14 +178,13 @@ export const analyzeTask = async (profile: ProfileType, taskTitle: string, lang:
   } catch (error) {
     console.error("Error analyzing task:", error);
     return {
-      steps: [{ id: '1', text: "Start task", completed: false }],
+      steps: [{ id: '1', text: taskTitle, completed: false }],
       estimatedMinutes: 15,
       feedback: "Could not estimate time."
     };
   }
 };
 
-// Deprecated wrapper to maintain compatibility if needed, but we prefer analyzeTask
 export const getTaskSteps = async (profile: ProfileType, taskTitle: string, lang: Language): Promise<TaskStep[]> => {
   const result = await analyzeTask(profile, taskTitle, lang);
   return result.steps;
