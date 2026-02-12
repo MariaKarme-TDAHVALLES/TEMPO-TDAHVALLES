@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
       plugins: [react()],
       define: {
         // Això fa que l'app pugui llegir la clau de Vercel
-        'process.env.VITE_GEMINI_API_KEY': JSON.stringify(env.VITE_GEMINI_API_KEY),
+        'process.env.GEMINI_API_KEY': JSON.stringify(env.VITE_GEMINI_API_KEY),
         'import.meta.env.VITE_GEMINI_API_KEY': JSON.stringify(env.VITE_GEMINI_API_KEY)
       },
       resolve: {
