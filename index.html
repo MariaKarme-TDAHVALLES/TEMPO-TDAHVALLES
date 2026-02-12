@@ -5,43 +5,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
     <title>TEMPO TDAH - Vallès</title>
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="./manifest.json">
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3652/3652191.png">
     <meta name="theme-color" content="#E85B22">
-    
-    <!-- Tailwind CSS with Custom Config -->
-    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      // Neuro-Config: Integrate colors directly into Tailwind for consistency
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              'tdah-blue': '#003366',
-              'tdah-orange': '#E85B22',
-              'tdah-light': '#F8FAFC',
-            },
-            fontFamily: {
-              'child': ['"Fredoka One"', 'cursive'],
-              'teen': ['"Space Grotesk"', 'sans-serif'],
-              'adult': ['"Montserrat"', 'sans-serif'],
-            }
-          }
-        }
-      }
-      
-      // Filter out the "CDN in production" warning to reduce console noise/anxiety
+      // Suppress the "cdn.tailwindcss.com should not be used in production" warning
+      // This allows us to use the CDN for rapid deployment without console noise.
       const originalWarn = console.warn;
-      console.warn = (...args) => {
+      console.warn = function(...args) {
         if (args[0] && typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) return;
         originalWarn.apply(console, args);
       };
     </script>
-
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Fredoka+One&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
-    
     <style>
-      /* Base styles that complement Tailwind */
       :root {
         --tdah-blue: #003366;
         --tdah-orange: #E85B22;
@@ -52,11 +30,18 @@
         padding: 0;
         font-family: 'Montserrat', sans-serif;
         background-color: var(--tdah-light);
-        /* Ensure touch actions are handled by JS where needed, but allow scroll */
-        touch-action: manipulation;
       }
-      
-      /* Watermark Animation */
+      .font-child { font-family: 'Fredoka One', cursive; }
+      .font-teen { font-family: 'Space Grotesk', sans-serif; }
+      .font-adult { font-family: 'Montserrat', sans-serif; }
+
+      .bg-tdah-blue { background-color: var(--tdah-blue); }
+      .text-tdah-blue { color: var(--tdah-blue); }
+      .bg-tdah-orange { background-color: var(--tdah-orange); }
+      .text-tdah-orange { color: var(--tdah-orange); }
+      .border-tdah-blue { border-color: var(--tdah-blue); }
+      .border-tdah-orange { border-color: var(--tdah-orange); }
+
       .watermark-container {
         position: fixed;
         top: 0;
@@ -72,7 +57,6 @@
         transform: rotate(-15deg);
       }
 
-      /* Animations for Neuro-Stimulation */
       @keyframes shake {
         0% { transform: translate(1px, 1px) rotate(0deg); }
         10% { transform: translate(-1px, -2px) rotate(-1deg); }
@@ -86,13 +70,17 @@
         90% { transform: translate(1px, 2px) rotate(0deg); }
         100% { transform: translate(1px, -2px) rotate(-1deg); }
       }
-      .animate-shake { animation: shake 0.5s infinite; }
+      .animate-shake {
+        animation: shake 0.5s infinite;
+      }
 
       @keyframes strobe {
         0%, 100% { opacity: 1; }
         50% { opacity: 0; }
       }
-      .animate-strobe { animation: strobe 0.1s infinite; }
+      .animate-strobe {
+        animation: strobe 0.1s infinite;
+      }
 
       .glow-energy {
         box-shadow: 0 0 15px #FBBF24, 0 0 30px #F59E0B;
@@ -109,18 +97,10 @@
         25% { transform: translateY(-20px) rotate(5deg); }
         75% { transform: translateY(-20px) rotate(-5deg); }
       }
-      .animate-dance { animation: dance 0.6s infinite ease-in-out; }
-      
-      /* Hide Scrollbar but allow scroll */
-      .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-      }
-      .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
+      .animate-dance {
+        animation: dance 0.6s infinite ease-in-out;
       }
     </style>
-    
     <script type="importmap">
     {
       "imports": {
@@ -137,13 +117,12 @@
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          // Register SW from root to ensure scope is correct
-          navigator.serviceWorker.register('/sw.js')
-            .then(reg => console.log('SW registered with scope:', reg.scope))
-            .catch(err => console.error('SW registration failed:', err));
+          // Use relative path ./sw.js to avoid origin mismatch errors in previews
+          navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log('SW registered'))
+            .catch(err => console.log('SW registration failed (common in preview environments):', err));
         });
       }
     </script>
   </body>
 </html>
-    
